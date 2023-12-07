@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  app:
+    container_name: ambisiuslab
+    build:
+      context: .
+    image: nextjs/ambisiuslab
+    restart: always
+    command: npm run dev
+    environment:
+      - NODE_ENV=development
+      # for windows (wsl2) bug
+      - WDS_SOCKET_HOST=127.0.0.1 
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - 3000:3000

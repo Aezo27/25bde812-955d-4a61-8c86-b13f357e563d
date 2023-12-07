@@ -1,0 +1,10 @@
+version: '3.9'
+
+services:
+  app:
+    container_name: ambisiuslab
+    build:
+      dockerfile: Dockerfile.production
+    image: nextjs/ambisiuslab
+    ports:
+      - 3000:3000
