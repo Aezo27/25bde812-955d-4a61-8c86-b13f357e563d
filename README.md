@@ -8,23 +8,26 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 ## Docker Compose
 
-How to run docker compose:
+How to build docker compose:
 
 ```bash
 # Development
 docker-compose up --build
 # Production
 docker-compose -f docker-composer.production.yml up --build
+```
+
+How to run and stop docker container:
+
+```bash
+# Run
+docker start -i ambisiuslab
+# stop
+ddocker stop ambisiuslab
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
