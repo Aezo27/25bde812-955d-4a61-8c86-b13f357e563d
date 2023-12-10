@@ -33,7 +33,7 @@ const Search: React.FC<SearchProps> = ({search}) => {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="w-5 h-5 mx-3 text-gray-400 dark:text-gray-600"
+            className="w-5 h-5 mx-3 text-gray-400 dark:text-gray-500"
           >
             <path
               strokeLinecap="round"
@@ -55,10 +55,10 @@ const Search: React.FC<SearchProps> = ({search}) => {
 
         {search &&
           <button type="button" className="absolute right-0" onClick={resetSearch}>
-            <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 mx-3 text-gray-400 dark:text-gray-600">
+            <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 mx-3 text-gray-400 dark:text-gray-500">
               <g clipPath="url(#clip0_1222_37032)">
-                <path d="M13.5 0.5L0.5 13.5" stroke="black" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M0.5 0.5L13.5 13.5" stroke="black" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M13.5 0.5L0.5 13.5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M0.5 0.5L13.5 13.5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
               </g>
               <defs>
                 <clipPath id="clip0_1222_37032">

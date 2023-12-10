@@ -4,9 +4,10 @@ import TableAction from "./modals/TableAction";
 
 interface TableProps {
   products: Array<string>,
+  total: number,
 }
 
-const ProductTable: React.FC<TableProps> = ({ products }) => {
+const ProductTable: React.FC<TableProps> = ({ products, total }) => {
   return (
     <div className="flex flex-col mt-6">
       <div className="inline-block min-w-full py-2 align-middle">
@@ -94,6 +95,11 @@ const ProductTable: React.FC<TableProps> = ({ products }) => {
               ))}
             </tbody>
           </table>
+          {!total &&
+            <div className="bg-white dark:bg-gray-800">
+            <h3 className="py-4 text-center">No item found</h3>
+          </div>
+          }
         </div>
       </div>
     </div>

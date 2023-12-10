@@ -25,7 +25,7 @@ export async function getProduct(params: any) {
       );
     }
     const data = await response.json();
-    const pages = Math.ceil(data.total / limit);
+    const pages = Math.ceil(data.total / limit) == 0 ? 1:Math.ceil(data.total / limit);
     return { data, pages };
   } catch (e: any) {
     return { error: e.message };

@@ -19,7 +19,7 @@ export default async function Home({
     <main className="min-h-screen back bg-gray-100 dark:bg-gray-900 pt-4 pb-20">
       <section className="container px-4 mx-auto">
         <ProductHeader total={total} search={searchParams?.search}/>
-      <ProductTable products={products}/>
+        <ProductTable products={products} total={total}/>
       <ProductFooter pages={pages}/>
       </section>
     </main>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 interface HeaderProps {
   pages: number | undefined,
 }
@@ -11,7 +11,7 @@ const ProductFooter: React.FC<HeaderProps> = ({ pages }) => {
   const searchParams = useSearchParams();
   const searchUrl = searchParams.get("search");
   const totalPages = [...Array(pages)].map((_, i) => i + 1);
-  const [currPage, setCurrPage] = useState(Number(searchParams.get("page")) || 1);
+  const [currPage, setCurrPage] = useState(1);
   const goToPage = (p: number) => {
     setCurrPage(p);
     var query;
@@ -32,6 +32,14 @@ const ProductFooter: React.FC<HeaderProps> = ({ pages }) => {
     query = new URLSearchParams(qstring).toString();
     router.push('?' + query, { scroll: false });
   };
+
+  useEffect(() => {
+    setCurrPage(Number(searchParams.get("page")) || 1)
+    return () => {
+    }
+  }, [searchParams])
+  
+
   return (
     <div className="mt-6 sm:flex sm:items-center sm:justify-between ">
       <div className="text-sm text-gray-500 dark:text-gray-400">
