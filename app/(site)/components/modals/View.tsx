@@ -45,9 +45,9 @@ const View: React.FC<ViewProps> = ({ product, setIsView }) => {
       <div onClick={closeModal} className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
       <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
         <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-          <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+          <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 dark:bg-gray-700">
             <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-              <h3 className="text-xl font-semibold leading-6 text-gray-900" id="modal-title">Product Detail</h3>
+              <h3 className="text-xl font-semibold leading-6 text-gray-900 dark:text-white" id="modal-title">Product Detail</h3>
               <div className="mt-2" style={{textWrap: "wrap"}}>
                 <div className="flex flex-col gap-3 w-full">
                   <div className="flex flex-row">
@@ -94,7 +94,7 @@ const View: React.FC<ViewProps> = ({ product, setIsView }) => {
               </div>
             </div>
           </div>
-          <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+          <div className="bg-gray-50 dark:bg-gray-800 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
             <button onClick={closeModal} type="button" className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Close</button>
           </div>
         </div>

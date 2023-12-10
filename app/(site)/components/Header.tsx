@@ -1,5 +1,5 @@
-"use client"
 import Search from "./header/Search";
+import ThemeSwitch from "./header/ThemeSwitch";
 
 interface HeaderProps {
   total: string,
@@ -9,7 +9,10 @@ interface HeaderProps {
 const ProductHeader: React.FC<HeaderProps> = ({ total, search }) => {
 
   return (
-    <div>
+    <>
+      <div className="flex justify-end mb-3 h-8">
+        <ThemeSwitch/>
+      </div>
       <div className="sm:flex sm:items-center sm:justify-between">
         <div>
           <div className="flex items-center gap-x-3">
@@ -42,7 +45,7 @@ const ProductHeader: React.FC<HeaderProps> = ({ total, search }) => {
         </div>
         <Search search={search}/>
       </div>
-    </div>
+    </>
   );
 };
 

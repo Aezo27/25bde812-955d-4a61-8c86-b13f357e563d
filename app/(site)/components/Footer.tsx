@@ -42,7 +42,7 @@ const ProductFooter: React.FC<HeaderProps> = ({ pages }) => {
         <button
           disabled={currPage == 1 ? true : false}
           onClick={() => goToPage(currPage - 1)}
-          className={`flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-l-md sm:w-auto ${currPage == 1 ? 'opacity-50' : 'hover:bg-gray-100 dark:hover:bg-gray-800'} gap-x-2  dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 `}>
+          className={`flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-l-md sm:w-auto ${currPage == 1 ? 'opacity-50' : 'hover:bg-gray-100 dark:hover:bg-gray-800'} gap-x-2  dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700 `}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 rtl:-scale-x-100">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
           </svg>
@@ -55,7 +55,7 @@ const ProductFooter: React.FC<HeaderProps> = ({ pages }) => {
             <button
               disabled={currPage == page ? true : false}
               onClick={() => goToPage(page)}
-              className={`flex items-center justify-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 border ${currPage == page ? "bg-grey-200" : "bg-white hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800"} sm:w-auto gap-x-2`}
+              className={`flex items-center justify-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 border ${currPage == page ? "bg-grey-200" : "bg-white hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-800"} dark:text-gray-200 sm:w-auto gap-x-2`}
               key={page}
             >{page}
             </button>
@@ -64,7 +64,7 @@ const ProductFooter: React.FC<HeaderProps> = ({ pages }) => {
         <button
           disabled={currPage == pages ? true : false}
           onClick={() => goToPage(currPage + 1)}
-          className={`flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-l-md sm:w-auto ${currPage == pages ? 'opacity-50' : 'hover:bg-gray-100 dark:hover:bg-gray-800'} gap-x-2  dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 `}>
+          className={`flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-r-md sm:w-auto ${currPage == pages ? 'opacity-50' : 'hover:bg-gray-100 dark:hover:bg-gray-800'} gap-x-2 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700 `}>
           <span>
             Next
           </span>

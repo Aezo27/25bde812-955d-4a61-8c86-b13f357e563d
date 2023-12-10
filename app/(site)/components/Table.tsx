@@ -10,9 +10,9 @@ const ProductTable: React.FC<TableProps> = ({ products }) => {
   return (
     <div className="flex flex-col mt-6">
       <div className="inline-block min-w-full py-2 align-middle">
-        <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
-          <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-            <thead className="bg-gray-50 dark:bg-gray-800">
+        <div className="overflow-hidden border border-gray-200 dark:border-gray-600 md:rounded-lg">
+          <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
+            <thead className="bg-gray-50 dark:bg-gray-700">
               <tr>
                 <th
                   scope="col"
@@ -49,7 +49,7 @@ const ProductTable: React.FC<TableProps> = ({ products }) => {
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+            <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-600 dark:bg-gray-800">
               {products.map((item: any) => (
                 <tr key={item.id}>
                   <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
