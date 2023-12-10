@@ -47,7 +47,7 @@ const Delete: React.FC<DeleteProps> = ({ deleteData, setIsDelete }) => {
               </div>
               <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                 <h3 className="text-xl font-semibold leading-6 text-gray-900" id="modal-title">Delete {deleteData[0]}</h3>
-                <div className="mt-2">
+                <div className="mt-2" style={{ textWrap: "wrap" }}>
                   <p className="text-sm text-gray-500">Are you sure you want to delete this product? All of your data will be permanently removed. This action cannot be undone.</p>
                 </div>
               </div>

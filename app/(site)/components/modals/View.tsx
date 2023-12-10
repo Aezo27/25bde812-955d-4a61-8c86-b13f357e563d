@@ -48,7 +48,7 @@ const View: React.FC<ViewProps> = ({ product, setIsView }) => {
           <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
             <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
               <h3 className="text-xl font-semibold leading-6 text-gray-900" id="modal-title">Product Detail</h3>
-              <div className="mt-2">
+              <div className="mt-2" style={{textWrap: "wrap"}}>
                 <div className="flex flex-col gap-3 w-full">
                   <div className="flex flex-row">
                     <p className="text-base font-medium w-[30%] shrink-0">Name</p>
