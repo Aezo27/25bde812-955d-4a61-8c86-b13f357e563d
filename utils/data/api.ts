@@ -2,6 +2,10 @@
 
 import { revalidateTag } from "next/cache";
 
+export interface productInterface {
+  title: string;
+}
+
 export async function getProduct(params: any) {
   try {
     const limit = 10;
@@ -66,10 +70,10 @@ export async function viewProduct(id: number) {
   }
 }
 
-export async function addProduct(formData: FormData) {
+export async function addProduct(formData: productInterface) {
   try {
-    const response = await fetch("https://dummyjson.com/products/1", {
-      method: "PUT" /* or PATCH */,
+    const response = await fetch("https://dummyjson.com/products/add", {
+      method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     });
