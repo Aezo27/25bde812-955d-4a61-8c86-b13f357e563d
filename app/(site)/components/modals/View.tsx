@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { disableScroll, enableScroll } from "@/utils/bodyScroll";
 import { deleteProduct } from "@/utils/data/api";
 import Image from 'next/image';
+import Button from '@/components/Button';
 
 interface ViewProps {
   product: {
@@ -95,7 +96,7 @@ const View: React.FC<ViewProps> = ({ product, setIsView }) => {
             </div>
           </div>
           <div className="bg-gray-50 dark:bg-gray-800 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-            <button onClick={closeModal} type="button" className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Close</button>
+            <Button variant="secondary" onClick={closeModal}>Close</Button>
           </div>
         </div>
       </div>

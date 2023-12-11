@@ -37,6 +37,7 @@ const TableAction: React.FC<ActionProps> = ({name, id}) => {
         <button
           onClick={view}
           aria-label="View Product"
+          title="View Product"
           className="px-1 py-1 text-gray-500 hover:text-blue-500 transition-colors duration-200">
           <svg className="w-5" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13.23 6.2463C13.3958 6.45302 13.4876 6.72159 13.4876 7.00006C13.4876 7.27853 13.3958 7.5471 13.23 7.75382C12.18 9.02509 9.78997 11.5001 6.99997 11.5001C4.20997 11.5001 1.81997 9.02509 0.769968 7.75382C0.604128 7.5471 0.512329 7.27853 0.512329 7.00006C0.512329 6.72159 0.604128 6.45302 0.769968 6.2463C1.81997 4.97503 4.20997 2.5 6.99997 2.5C9.78997 2.5 12.18 4.97503 13.23 6.2463Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
@@ -46,6 +47,7 @@ const TableAction: React.FC<ActionProps> = ({name, id}) => {
         <button
           onClick={view}
           aria-label="Edit Product"
+          title="Edit Product"
           className="px-1 py-1 text-gray-500 hover:text-blue-500 transition-colors duration-200">
           <svg className="w-5" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clipPath="url(#clip0_1222_47668)">
@@ -62,6 +64,7 @@ const TableAction: React.FC<ActionProps> = ({name, id}) => {
         <button
           onClick={() => { setIsDelete([name, id, true]) }}
           aria-label="Delete Product"
+          title="Delete Product"
           className="px-1 py-1 text-gray-500 hover:text-red-500 transition-colors duration-200">
           <svg className="w-5" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clipPath="url(#clip0_1222_37750)">
