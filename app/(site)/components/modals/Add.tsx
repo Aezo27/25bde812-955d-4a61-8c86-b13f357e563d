@@ -93,7 +93,7 @@ return (
               <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 dark:bg-gray-700">
                 <h3 className="text-xl font-semibold leading-6 text-gray-900 dark:text-white" id="modal-title">Add Product</h3>
                 <div className="mt-8">
-                  <Input autofocus name="title" register={{ ...register('title') }} error={errors.title?.message} label="Product Name" />
+                  <Input autofocus name="title" required register={{ ...register('title') }} error={errors.title?.message} label="Product Name" />
                 </div>
               </div>
               <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 dark:bg-gray-800">
