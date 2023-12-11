@@ -4,10 +4,11 @@ import ThemeSwitch from "./header/ThemeSwitch";
 
 interface HeaderProps {
   total: string;
+  category?: string;
   search?: string;
 }
 
-const ProductHeader: React.FC<HeaderProps> = ({ total, search }) => {
+const ProductHeader: React.FC<HeaderProps> = ({ total, category, search }) => {
   return (
     <>
       <div className="flex justify-end mb-3 h-8">
@@ -54,7 +55,7 @@ const ProductHeader: React.FC<HeaderProps> = ({ total, search }) => {
       </div>
 
       <div className="mt-6 md:flex md:items-center md:justify-between">
-        <Filter/>
+        <Filter category={category} />
         <Search search={search} />
       </div>
     </>

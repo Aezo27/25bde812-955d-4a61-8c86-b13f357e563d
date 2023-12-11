@@ -4,18 +4,23 @@ import { getCategories } from "@/utils/data/api";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const Filter = () => {
-  const [isOpen, setIsOpen] = useState(false)
+interface CategoryProps {
+  category?: string;
+}
 
-  const [category, setCategory] = useState([])
-  const [activeCategory, setActiveCategory] = useState("All")
+
+const Filter: React.FC<CategoryProps> = ({ category }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const [categoryData, setCategoryData] = useState([]);
+  const [activeCategory, setActiveCategory] = useState(category || "All");
   const makeCategories = async () => {
-    setCategory(await getCategories());
+    setCategoryData(await getCategories());
   };
 
   const router = useRouter();
-  
-  const handleCategory = (category:string) => {
+
+  const handleCategory = (category: string) => {
     setActiveCategory(category);
     let query = "";
     let qstring = "category=" + category;
@@ -29,11 +34,9 @@ const Filter = () => {
   };
 
   useEffect(() => {
-    makeCategories()
-    return () => {
-    }
-  }, [])
-  
+    makeCategories();
+    return () => {};
+  }, []);
 
   return (
     <div
@@ -78,7 +81,7 @@ const Filter = () => {
           >
             All
           </span>
-          {category.map((item: string, i) => (
+          {categoryData.map((item: string, i) => (
             <span
               onClick={() => {
                 handleCategory(item);
@@ -94,6 +97,6 @@ const Filter = () => {
       </div>
     </div>
   );
-}
+};
  
 export default Filter;
