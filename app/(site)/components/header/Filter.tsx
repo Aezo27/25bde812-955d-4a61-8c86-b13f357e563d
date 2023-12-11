@@ -1,0 +1,99 @@
+"use client"
+
+import { getCategories } from "@/utils/data/api";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
+const Filter = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const [category, setCategory] = useState([])
+  const [activeCategory, setActiveCategory] = useState("All")
+  const makeCategories = async () => {
+    setCategory(await getCategories());
+  };
+
+  const router = useRouter();
+  
+  const handleCategory = (category:string) => {
+    setActiveCategory(category);
+    let query = "";
+    let qstring = "category=" + category;
+    query = new URLSearchParams(qstring).toString();
+    router.push("?" + query, { scroll: false, shallow: true });
+  };
+
+  const resetCategory = () => {
+    router.push("/", { scroll: false, shallow: true });
+    setActiveCategory("All");
+  };
+
+  useEffect(() => {
+    makeCategories()
+    return () => {
+    }
+  }, [])
+  
+
+  return (
+    <div
+      className="relative inline-block text-left"
+      onBlur={() => setIsOpen(false)}
+    >
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="inline-flex items-center bg-white hover:bg-gray-50 border rounded-lg text-gray-500 dark:text-gray-400 dark:bg-gray-700 rtl:flex-row-reverse dark:border-gray-600 dark:divide-gray-600 py-1 px-2"
+      >
+        <h2 className="text-base">Category: {activeCategory}</h2>
+        <svg
+          className="h-5 w-5"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </button>
+
+      <div
+        className={`absolute left-0 z-10 mt-2 origin-top-left rounded-md bg-white dark:bg-gray-700 shadow-lg ring-1 ring-black dark:ring-gray-500 ring-opacity-5 focus:outline-none transition ease-out duration-100 w-[700px] ${
+          isOpen
+            ? "transform opacity-100 scale-100"
+            : "transform opacity-0 scale-95"
+        } `}
+        role="menu"
+        aria-orientation="vertical"
+        aria-labelledby="menu-button"
+        tabIndex={0}
+      >
+        <div className="py-1 grid grid-cols-4" role="none">
+          <span
+            onClick={resetCategory}
+            className="text-gray-500 dark:text-gray-400 block px-4 py-2 text-sm hover:bg-gray-100 cursor-pointer"
+            role="menuitem"
+          >
+            All
+          </span>
+          {category.map((item: string, i) => (
+            <span
+              onClick={() => {
+                handleCategory(item);
+              }}
+              key={"category" + i}
+              className="text-gray-500 dark:text-gray-400 block px-4 py-2 text-sm hover:bg-gray-100 cursor-pointer"
+              role="menuitem"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+ 
+export default Filter;

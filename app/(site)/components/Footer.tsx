@@ -10,6 +10,7 @@ const ProductFooter: React.FC<HeaderProps> = ({ pages }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const searchUrl = searchParams.get("search");
+  const category = searchParams.get("category");
   const totalPages = [...Array(pages)].map((_, i) => i + 1);
   const [currPage, setCurrPage] = useState(1);
   const goToPage = (p: number) => {
@@ -21,6 +22,12 @@ const ProductFooter: React.FC<HeaderProps> = ({ pages }) => {
         qstring = "search="+searchUrl+"&page=" + p;
       } else {
         qstring = "search=" + searchUrl;
+      }
+    } else if(category){
+      if (p != 1) {
+        qstring = "category=" + category + "&page=" + p;
+      } else {
+        qstring = "category=" + category;
       }
     } else {
       if (p != 1) {
