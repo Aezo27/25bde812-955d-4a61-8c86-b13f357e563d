@@ -18,9 +18,9 @@ const Toast: React.FC<ToastProps> = ({ variant, toastHandler, children }) => {
   }
   
   useEffect(() => {
-    setIsShow(true);
     setTimeout(() => {
-    }, 100);
+      setIsShow(true);
+    }, 50);
 
     setTimeout(() => {
       hideToast();
