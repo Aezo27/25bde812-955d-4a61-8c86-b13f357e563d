@@ -76,7 +76,7 @@ const Filter: React.FC<CategoryProps> = ({ category }) => {
         <div className="py-1 grid grid-cols-4" role="none">
           <span
             onClick={resetCategory}
-            className="text-gray-500 dark:text-gray-400 block px-4 py-2 text-sm hover:bg-gray-100 cursor-pointer"
+            className="text-gray-500 dark:text-gray-400 block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-slate-800 cursor-pointer"
             role="menuitem"
           >
             All
@@ -87,7 +87,7 @@ const Filter: React.FC<CategoryProps> = ({ category }) => {
                 handleCategory(item);
               }}
               key={"category" + i}
-              className="text-gray-500 dark:text-gray-400 block px-4 py-2 text-sm hover:bg-gray-100 cursor-pointer"
+              className="text-gray-500 dark:text-gray-400 block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-slate-800 cursor-pointer"
               role="menuitem"
             >
               {item}
