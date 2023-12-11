@@ -63,10 +63,10 @@ const Filter: React.FC<CategoryProps> = ({ category }) => {
       </button>
 
       <div
-        className={`absolute left-0 z-10 mt-2 origin-top-left rounded-md bg-white dark:bg-gray-700 shadow-lg ring-1 ring-black dark:ring-gray-500 ring-opacity-5 focus:outline-none transition ease-out duration-100 w-[700px] ${
+        className={`absolute left-0 z-10 mt-2 p-4 origin-top-left rounded-md bg-white dark:bg-gray-700 shadow-lg ring-1 ring-black dark:ring-gray-500 ring-opacity-5 focus:outline-none transition ease-out duration-100 w-[700px] ${
           isOpen
-            ? "transform opacity-100 scale-100"
-            : "transform opacity-0 scale-95"
+            ? "transform opacity-100 scale-100 visible"
+            : "transform opacity-0 scale-95 invisible"
         } `}
         role="menu"
         aria-orientation="vertical"

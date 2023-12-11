@@ -35,7 +35,7 @@ export async function getProduct(params: any) {
       );
     }
     const data = await response.json();
-    const pages = Math.ceil(data.total / limit) == 0 ? 1:Math.ceil(data.total / limit);
+    const pages = Math.ceil(data.total / limit) === 0 ? 1:Math.ceil(data.total / limit);
     return { data, pages };
   } catch (e: any) {
     return { error: e.message };
@@ -59,6 +59,20 @@ export async function deleteProduct(id:number){
 export async function viewProduct(id: number) {
   try {
     const response = await fetch("https://dummyjson.com/products/" + id);
+    const data = await response.json();
+    return data;
+  } catch (e: any) {
+    return { error: e.message };
+  }
+}
+
+export async function addProduct(formData: FormData) {
+  try {
+    const response = await fetch("https://dummyjson.com/products/1", {
+      method: "PUT" /* or PATCH */,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
     const data = await response.json();
     return data;
   } catch (e: any) {

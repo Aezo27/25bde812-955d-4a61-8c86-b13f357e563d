@@ -84,7 +84,7 @@ const ProductTable: React.FC<TableProps> = ({ products, total }) => {
                           style={{ width: (item.stock / 200) * 100 + "%" }}
                         ></div>
                       </div>
-                      <Tooltip text={item.stock} />
+                      <Tooltip content={item.stock} />
                     </div>
                   </td>
 

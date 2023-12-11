@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { disableScroll, enableScroll } from "@/utils/bodyScroll";
 import { deleteProduct } from "@/utils/data/api";
 import Button from '@/components/Button';
+import Toast from '@/components/Toast';
 
 interface DeleteProps {
   deleteData: (string | number | boolean)[],
@@ -11,20 +12,32 @@ interface DeleteProps {
 
 const Delete: React.FC<DeleteProps> = ({ deleteData, setIsDelete }) => {
 
-  const [isShow, setIsShow] = useState(false)
+  const [isShow, setIsShow] = useState(false);
+  const [isToast, setIsToast] = useState(false);
 
   const closeModal = () => {
     setIsShow(false);
     setTimeout(() => {  
       enableScroll();
-      setIsDelete(["", 0, false])
     }, 500);
+  }
+
+  const toastHandler = () => {
+    if (!isToast) {
+      setIsToast(true);
+      closeModal();
+    } else {
+      setIsToast(false);
+      setIsDelete(["", 0, false])
+    }
   }
 
   const deleteAction = async (id:number) => {
     const result = await deleteProduct(id);
     console.log(result);
-    closeModal();
+    if (result) {
+      toastHandler();
+    }
   }
   
   useEffect(() => {
@@ -35,7 +48,11 @@ const Delete: React.FC<DeleteProps> = ({ deleteData, setIsDelete }) => {
   }, [])
 
   return ( 
-    <div className={`fixed inset-0 z-10 w-screen overflow-y-auto ${isShow? "opacity-100":"opacity-0"} transition-all duration-500`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <>
+    {isToast &&
+      <Toast toastHandler={toastHandler} variant="danger">Item has been deleted (see console).</Toast>
+    }
+    <div className={`fixed inset-0 z-10 w-screen overflow-y-auto ${isShow? "opacity-100 visible":"opacity-0 invisible"} transition-all duration-500`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
       <div onClick={closeModal} className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
       <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
         <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg dark:bg-gray-700">
@@ -61,6 +78,7 @@ const Delete: React.FC<DeleteProps> = ({ deleteData, setIsDelete }) => {
         </div>
       </div>
     </div>
+    </>
    );
 }
  
