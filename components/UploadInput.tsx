@@ -1,3 +1,8 @@
+"use client"
+
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+
 interface UploadProps {
   name: string,
   required?: boolean,
@@ -11,6 +16,41 @@ interface UploadProps {
 }
 
 const UploadInput: React.FC<UploadProps> = ({name, required, readonly, disable, onChange, label, error, register, multiple}) => {
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [files, setFiles] = useState<Array<string>>([]);
+  const [isError, isSetError] = useState("")
+
+  function handleChange(e: any) {
+    console.log(e.target.files);
+    if (e.target.files && e.target.files[0]) {
+      for (let i = 0; i < e.target.files["length"]; i++) {
+        setFiles((prevState: any) => [...prevState, e.target.files[i]]);
+      }
+    }
+  }
+
+  function removeFile(fileName: any, idx: any) {
+    const newArr = [...files];
+    newArr.splice(idx, 1);
+    setFiles([]);
+    setFiles(newArr);
+    inputRef.current!.value = "";
+  }
+
+  // convert file size
+  const formatBytes = (bytes: number, decimals = 2) => {
+    if (!+bytes) return '0 Bytes'
+
+    const k = 1024
+    const dm = decimals < 0 ? 0 : decimals
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+
+    const i = Math.floor(Math.log(bytes) / Math.log(k))
+
+    return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`
+  }
+
   return (
     <div className="w-full">
       {label && (
@@ -52,12 +92,15 @@ const UploadInput: React.FC<UploadProps> = ({name, required, readonly, disable, 
           </p>
         </div>
         <input
+          ref={inputRef}
           id="dropzone-file"
           type="file"
-          name={name}
+          name={multiple ? name+"[]":name}
           {...register}
           className="hidden"
           multiple={true}
+          onChange={handleChange}
+          accept="image/*"
         />
       </label>
       {error && (
@@ -65,6 +108,38 @@ const UploadInput: React.FC<UploadProps> = ({name, required, readonly, disable, 
           {error}
         </div>
       )}
+      <div className="flex items-center gap-2 p-3">
+        {files.map((file: any, idx: any) => (
+          <>
+            {/* <div key={idx} className="flex flex-row space-x-5">
+              <Image src={URL.createObjectURL(file)} alt={file.name} width={100} height={100}/>
+              <span>{file.name}</span>
+              <span
+                className="text-red-500 cursor-pointer"
+                onClick={() => removeFile(file.name, idx)}
+              >
+                remove
+              </span>
+            </div> */}
+            <div key={idx} className="relative h-40 w-40 flex flex-col items-center overflow-hidden text-center bg-gray-100 border rounded cursor-move select-none focus:border-blue-600">
+              <button onClick={() => removeFile(file.name, idx)} className="absolute top-0 right-0 z-50 p-1 bg-white rounded-bl focus:outline-none" type="button">
+                    <svg className="w-4 h-4 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                </button>
+
+              <Image className="inset-0 z-0 object-cover w-full h-full border-4 border-white preview" src={URL.createObjectURL(file)} alt={file.name} width={100} height={100} />
+
+                <div className="absolute bottom-0 left-0 right-0 flex flex-col p-2 text-xs bg-black bg-opacity-70">
+                <span className="w-full font-bold text-white truncate">{file.name}</span>
+                <span className="text-xs text-white">{formatBytes(file.size)}</span>
+                </div>
+            </div>
+          </>
+        ))}
+      </div>
     </div>
   );
 };
