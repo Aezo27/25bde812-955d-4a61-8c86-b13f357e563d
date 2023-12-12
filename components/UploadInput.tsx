@@ -15,7 +15,7 @@ interface UploadProps {
   multiple?: boolean,
 }
 
-const UploadInput: React.FC<UploadProps> = ({name, required, readonly, disable, onChange, label, error, register, multiple}) => {
+const UploadInput: React.FC<UploadProps> = ({ name, required, readonly, disable, onChange, label, error, register, multiple }) => {
 
   const inputRef = useRef<HTMLInputElement>(null);
   const [files, setFiles] = useState<Array<string>>([]);
@@ -61,11 +61,10 @@ const UploadInput: React.FC<UploadProps> = ({name, required, readonly, disable, 
       )}
       <label
         htmlFor="dropzone-file"
-        className={`flex flex-col items-center justify-center w-full h-64 border-2 ${
-          error
-            ? "border-red-500 dark:border-red-400"
-            : "border-gray-300 dark:border-gray-600"
-        } border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100  dark:hover:border-gray-500 dark:hover:bg-gray-600`}
+        className={`flex flex-col items-center justify-center mt-2 w-full h-64 border-2 ${error
+          ? "border-red-500 dark:border-red-400"
+          : "border-gray-300 dark:border-gray-600"
+          } border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100  dark:hover:border-gray-500 dark:hover:bg-gray-600`}
       >
         <div className="flex flex-col items-center justify-center pt-5 pb-6">
           <svg
@@ -95,7 +94,7 @@ const UploadInput: React.FC<UploadProps> = ({name, required, readonly, disable, 
           ref={inputRef}
           id="dropzone-file"
           type="file"
-          name={multiple ? name+"[]":name}
+          name={multiple ? name + "[]" : name}
           {...register}
           className="hidden"
           multiple={true}
@@ -108,36 +107,24 @@ const UploadInput: React.FC<UploadProps> = ({name, required, readonly, disable, 
           {error}
         </div>
       )}
-      <div className="flex items-center gap-2 p-3">
+      <div className="flex items-center gap-2 mt-4">
         {files.map((file: any, idx: any) => (
-          <>
-            {/* <div key={idx} className="flex flex-row space-x-5">
-              <Image src={URL.createObjectURL(file)} alt={file.name} width={100} height={100}/>
-              <span>{file.name}</span>
-              <span
-                className="text-red-500 cursor-pointer"
-                onClick={() => removeFile(file.name, idx)}
-              >
-                remove
-              </span>
-            </div> */}
-            <div key={idx} className="relative h-40 w-40 flex flex-col items-center overflow-hidden text-center bg-gray-100 border rounded cursor-move select-none focus:border-blue-600">
-              <button onClick={() => removeFile(file.name, idx)} className="absolute top-0 right-0 z-50 p-1 bg-white rounded-bl focus:outline-none" type="button">
-                    <svg className="w-4 h-4 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                    </svg>
-                </button>
+          <div key={idx} className="relative h-40 w-40 flex flex-col items-center overflow-hidden text-center bg-gray-100 dark:bg-gray-500 border rounded">
+            <button onClick={() => removeFile(file.name, idx)} className="absolute top-0 right-0 z-50 p-1 bg-white dark:bg-gray-400 rounded-bl focus:outline-none" type="button">
+              <svg className="w-4 h-4 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              </svg>
+            </button>
 
-              <Image className="inset-0 z-0 object-cover w-full h-full border-4 border-white preview" src={URL.createObjectURL(file)} alt={file.name} width={100} height={100} />
+            <Image className="inset-0 z-0 object-cover w-full h-full border-4 border-white dark:border-gray-400 preview" src={URL.createObjectURL(file)} alt={file.name} width={100} height={100} />
 
-                <div className="absolute bottom-0 left-0 right-0 flex flex-col p-2 text-xs bg-black bg-opacity-70">
-                <span className="w-full font-bold text-white truncate">{file.name}</span>
-                <span className="text-xs text-white">{formatBytes(file.size)}</span>
-                </div>
+            <div className="absolute bottom-0 left-0 right-0 flex flex-col p-2 text-xs bg-black dark:bg-white bg-opacity-70 dark:bg-opacity-80">
+              <span className="w-full font-bold text-white dark:text-black truncate">{file.name}</span>
+              <span className="text-xs text-white dark:text-black">{formatBytes(file.size)}</span>
             </div>
-          </>
+          </div>
         ))}
       </div>
     </div>

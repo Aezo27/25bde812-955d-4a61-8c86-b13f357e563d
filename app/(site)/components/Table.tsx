@@ -11,7 +11,7 @@ const ProductTable: React.FC<TableProps> = ({ products, total }) => {
   return (
     <div className="flex flex-col mt-6">
       <div className="inline-block min-w-full py-2 align-middle">
-        <div className="overflow-hidden border border-gray-200 dark:border-gray-600 md:rounded-lg">
+        <div className="overflow-auto lg:overflow-hidden border border-gray-200 dark:border-gray-600 md:rounded-lg">
           <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
             <thead className="bg-gray-50 dark:bg-gray-700">
               <tr>

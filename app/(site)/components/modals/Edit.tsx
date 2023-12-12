@@ -39,6 +39,13 @@ const Edit: React.FC<EditProps> = ({ product, setIsEdit }) => {
     }, 500);
   };
 
+  const cancel = () => {
+    closeModal();
+    setTimeout(() => {
+      setIsEdit(false);
+    }, 500);
+  }
+
   const {
     register,
     handleSubmit,
@@ -184,7 +191,7 @@ const Edit: React.FC<EditProps> = ({ product, setIsEdit }) => {
                 <Button
                   elType="button"
                   variant="secondary"
-                  onClick={closeModal}
+                  onClick={cancel}
                 >
                   Cancel
                 </Button>
