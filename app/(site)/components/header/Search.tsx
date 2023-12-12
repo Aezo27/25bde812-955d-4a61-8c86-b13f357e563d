@@ -11,7 +11,7 @@ const Search: React.FC<SearchProps> = ({search}) => {
 
   const router = useRouter();
   let query = "";
-  let qstring = "search=" + search;
+  let qstring = "search=" + isSearch;
   query = new URLSearchParams(qstring).toString();
 
   const handleSumbit = () => {
@@ -23,8 +23,8 @@ const Search: React.FC<SearchProps> = ({search}) => {
     setIsSearch("");
   }
 
-  return ( 
-    <form action="" onSubmit={handleSumbit}>
+  return (
+    <form action={handleSumbit}>
       <div className="relative flex items-center mt-4 md:mt-0">
         <button type="submit" className="absolute">
           <svg
@@ -48,17 +48,36 @@ const Search: React.FC<SearchProps> = ({search}) => {
           type="text"
           placeholder="Search"
           required
-          name="search"
+          name="s"
           value={isSearch}
           className="block w-full py-1.5 pr-5 text-gray-700 bg-white border border-gray-200 rounded-lg md:w-80 placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-gray-700 focus:ring-blue-300 dark:focus:ring-gray-700 focus:outline-none focus:ring focus:ring-opacity-40"
         />
 
-        {search &&
-          <button type="button" className="absolute right-0" onClick={resetSearch}>
-            <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 mx-3 text-gray-400 dark:text-gray-500">
+        {search && (
+          <button
+            type="button"
+            className="absolute right-0"
+            onClick={resetSearch}
+          >
+            <svg
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-3 h-3 mx-3 text-gray-400 dark:text-gray-500"
+            >
               <g clipPath="url(#clip0_1222_37032)">
-                <path d="M13.5 0.5L0.5 13.5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M0.5 0.5L13.5 13.5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
+                <path
+                  d="M13.5 0.5L0.5 13.5"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M0.5 0.5L13.5 13.5"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </g>
               <defs>
                 <clipPath id="clip0_1222_37032">
@@ -67,10 +86,10 @@ const Search: React.FC<SearchProps> = ({search}) => {
               </defs>
             </svg>
           </button>
-        }
+        )}
       </div>
     </form>
-   );
+  );
 }
  
 export default Search;

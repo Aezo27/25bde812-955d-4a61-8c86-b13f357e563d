@@ -38,8 +38,10 @@ const ProductHeader: React.FC<HeaderProps> = ({ total, category, search }) => {
         </div>
       </div>
 
-      <div className="mt-6 md:flex md:items-center md:justify-between">
-        <Filter category={category} />
+      <div className="mt-6 md:flex md:items-center md:justify-end">
+        {!search && 
+          <Filter category={category} />
+        }
         <Search search={search} />
       </div>
     </>
