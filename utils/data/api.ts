@@ -3,12 +3,20 @@
 import { revalidateTag } from "next/cache";
 
 export interface productInterface {
+  id?: number | "";
   title: string;
+  description: string;
+  brand: string;
+  price: number;
+  stock: number;
+  category: string;
+  discountPercentage?: number | "";
+  rating?: number | "";
 }
 
 export async function getProduct(params: any) {
   try {
-    const limit = 10;
+    const limit = 15;
     const page = params.page || 1;
     const skip = limit * (page - 1);
     const search = params.search;
@@ -74,6 +82,20 @@ export async function addProduct(formData: productInterface) {
   try {
     const response = await fetch("https://dummyjson.com/products/add", {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+    const data = await response.json();
+    return data;
+  } catch (e: any) {
+    return { error: e.message };
+  }
+}
+
+export async function editProduct(formData: productInterface) {
+  try {
+    const response = await fetch("https://dummyjson.com/products/"+formData.id, {
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     });
