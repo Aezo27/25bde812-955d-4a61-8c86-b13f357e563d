@@ -2,10 +2,10 @@
 
 import { getCategories } from "@/utils/data/api";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface CategoryProps {
-  category?: string;
+  category?: string,
 }
 
 
@@ -20,7 +20,16 @@ const Filter: React.FC<CategoryProps> = ({ category }) => {
 
   const router = useRouter();
 
+
+  const newRef = useRef<HTMLDivElement>(null);
+  const handleOutsideCategory = (e:any) => {
+    if (newRef.current && !newRef.current.contains(e.target)) {
+      setIsOpen(false);
+    }
+  };
+
   const handleCategory = (category: string) => {
+    setIsOpen(false);
     setActiveCategory(category);
     let query = "";
     let qstring = "category=" + category;
@@ -31,17 +40,19 @@ const Filter: React.FC<CategoryProps> = ({ category }) => {
   const resetCategory = () => {
     router.push("/", { scroll: false, shallow: true });
     setActiveCategory("All");
+    setIsOpen(false);
   };
 
   useEffect(() => {
     makeCategories();
+    document.addEventListener("mousedown", handleOutsideCategory);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideCategory);
+    };
   }, []);
 
   return (
-    <div
-      className="relative inline-block text-left"
-      onBlur={() => setIsOpen(false)}
-    >
+    <div ref={newRef} className="relative inline-block text-left mr-auto">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="inline-flex items-center bg-white hover:bg-gray-50 border rounded-lg text-gray-500 dark:text-gray-400 dark:bg-gray-700 rtl:flex-row-reverse dark:border-gray-600 dark:divide-gray-600 py-1 px-2"

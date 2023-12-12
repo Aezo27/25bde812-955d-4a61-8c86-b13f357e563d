@@ -3,7 +3,6 @@ import ProductFooter from "./components/Footer";
 import ProductHeader from "./components/Header";
 import ProductTable from "./components/Table";
 
-
 export default async function Home({
   searchParams,
 }: {

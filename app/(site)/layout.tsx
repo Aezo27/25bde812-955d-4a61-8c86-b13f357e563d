@@ -1,9 +1,9 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import '../globals.css'
-import Providers from '@/utils/Provider'
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "../globals.css";
+import Providers from "@/utils/Provider";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("http://localhost:3000"),
@@ -30,24 +30,19 @@ export const metadata: Metadata = {
     images: "/thumb.png",
     url: "http://localhost:3000",
   },
-  keywords: [
-    "CRUD",
-    "Ambisus Lab",
-  ],
-}
+  keywords: ["CRUD", "Ambisus Lab"],
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-          <Providers>
-            {children}
-          </Providers>
-        </body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
-  )
+  );
 }
