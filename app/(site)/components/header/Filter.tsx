@@ -2,6 +2,7 @@
 
 import { getCategories } from "@/utils/data/api";
 import { useRouter } from "next/navigation";
+
 import { useEffect, useRef, useState } from "react";
 
 interface CategoryProps {
@@ -20,11 +21,12 @@ const Filter: React.FC<CategoryProps> = ({ category }) => {
 
   const router = useRouter();
 
-
   const newRef = useRef<HTMLDivElement>(null);
   const handleOutsideCategory = (e:any) => {
-    if (newRef.current && !newRef.current.contains(e.target)) {
-      setIsOpen(false);
+    if (isOpen) {
+      if (newRef.current && !newRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
     }
   };
 
@@ -54,7 +56,9 @@ const Filter: React.FC<CategoryProps> = ({ category }) => {
   return (
     <div ref={newRef} className="relative inline-block text-left mr-auto">
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        aria-label="Category Selector"
+        onClick={() => {setIsOpen(!isOpen); console.log('aa');
+        }}
         className="inline-flex items-center bg-white hover:bg-gray-50 border rounded-lg text-gray-500 dark:text-gray-400 dark:bg-gray-700 rtl:flex-row-reverse dark:border-gray-600 dark:divide-gray-600 py-1 px-2"
       >
         <h2 className="text-base">Category: {activeCategory}</h2>
@@ -73,7 +77,7 @@ const Filter: React.FC<CategoryProps> = ({ category }) => {
       </button>
 
       <div
-        className={`absolute left-0 z-10 mt-2 p-4 origin-top-left rounded-md bg-white dark:bg-gray-700 shadow-lg ring-1 ring-black dark:ring-gray-500 ring-opacity-5 focus:outline-none transition ease-out duration-100 w-[700px] ${
+        className={`absolute left-0 z-10 mt-2 p-4 origin-top-left rounded-md bg-white dark:bg-gray-700 shadow-lg ring-1 ring-black dark:ring-gray-500 ring-opacity-5 focus:outline-none transition ease-out duration-100 md:w-[700px] w-[90vw] ${
           isOpen
             ? "transform opacity-100 scale-100 visible"
             : "transform opacity-0 scale-95 invisible"
@@ -83,7 +87,7 @@ const Filter: React.FC<CategoryProps> = ({ category }) => {
         aria-labelledby="menu-button"
         tabIndex={0}
       >
-        <div className="py-1 grid grid-cols-4" role="none">
+        <div className="py-1 grid md:grid-cols-4 grid-cols-2" role="none">
           <span
             onClick={resetCategory}
             className="text-gray-500 dark:text-gray-400 block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-slate-800 cursor-pointer"

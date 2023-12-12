@@ -6,7 +6,7 @@ interface HeaderProps {
   pages: number | undefined,
 }
 
-const ProductFooter: React.FC<HeaderProps> = ({ pages }) => {
+const Footer: React.FC<HeaderProps> = ({ pages }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const searchUrl = searchParams.get("search");
@@ -48,7 +48,7 @@ const ProductFooter: React.FC<HeaderProps> = ({ pages }) => {
   
 
   return (
-    <div className="mt-6 sm:flex sm:items-center sm:justify-between ">
+    <div data-testid="footer" className="mt-6 sm:flex sm:items-center sm:justify-between ">
       <div className="text-sm text-gray-500 dark:text-gray-400">
         Page <span className="font-medium text-gray-700 dark:text-gray-100">{currPage} of {pages}</span>
       </div>
@@ -65,7 +65,7 @@ const ProductFooter: React.FC<HeaderProps> = ({ pages }) => {
             previous
           </span>
         </button>
-        <div className="flex">
+        <div className="md:flex hidden">
           {totalPages.map((page) => (
             <button
               disabled={currPage === page ? true : false}
@@ -93,4 +93,4 @@ const ProductFooter: React.FC<HeaderProps> = ({ pages }) => {
   )
 }
 
-export default ProductFooter
+export default Footer

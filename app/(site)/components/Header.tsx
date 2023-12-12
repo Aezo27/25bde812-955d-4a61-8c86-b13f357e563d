@@ -9,9 +9,9 @@ interface HeaderProps {
   search?: string;
 }
 
-const ProductHeader: React.FC<HeaderProps> = ({ total, category, search }) => {
+const Header: React.FC<HeaderProps> = ({ total, category, search }) => {
   return (
-    <>
+    <header data-testid="header">
       <div className="flex justify-end mb-3 h-8">
         <ThemeSwitch />
       </div>
@@ -44,8 +44,8 @@ const ProductHeader: React.FC<HeaderProps> = ({ total, category, search }) => {
         }
         <Search search={search} />
       </div>
-    </>
+    </header>
   );
 };
 
-export default ProductHeader;
+export default Header;

@@ -14,7 +14,8 @@ const Search: React.FC<SearchProps> = ({search}) => {
   let qstring = "search=" + isSearch;
   query = new URLSearchParams(qstring).toString();
 
-  const handleSumbit = () => {
+  const handleSumbit = (e:any) => {
+    e.preventDefault()
     router.push("?" + query, { scroll: false, shallow: true });
   }
 
@@ -24,9 +25,9 @@ const Search: React.FC<SearchProps> = ({search}) => {
   }
 
   return (
-    <form action={handleSumbit}>
+    <form onSubmit={handleSumbit}>
       <div className="relative flex items-center mt-4 md:mt-0">
-        <button type="submit" className="absolute">
+        <button aria-label="Search Product" type="submit" className="absolute">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -48,7 +49,7 @@ const Search: React.FC<SearchProps> = ({search}) => {
           type="text"
           placeholder="Search"
           required
-          name="s"
+          name="search"
           value={isSearch}
           className="block w-full py-1.5 pr-5 text-gray-700 bg-white border border-gray-200 rounded-lg md:w-80 placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-gray-700 focus:ring-blue-300 dark:focus:ring-gray-700 focus:outline-none focus:ring focus:ring-opacity-40"
         />
