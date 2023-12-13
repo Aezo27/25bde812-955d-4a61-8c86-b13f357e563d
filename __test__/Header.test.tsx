@@ -28,7 +28,7 @@ describe("Header Testing", () => {
         expect(addBtn).toBeInTheDocument();
       })
     })
-  
+
     it("should have Search Input", async () => {
       render(<Header total={total} />);
       const search = screen.getByPlaceholderText(/Search/i);
@@ -36,16 +36,16 @@ describe("Header Testing", () => {
         expect(search).toBeInTheDocument();
       })
     })
-  
-    it("should have Category Selector", async() => {
+
+    it("should have Category Selector", async () => {
       render(<Header total={total} />);
-      const categoryBtn = screen.getByLabelText(/Category: All/i);
+      const categoryBtn = screen.getByRole("button", { name: /Category: All/i });
       await waitFor(() => {
         expect(categoryBtn).toBeInTheDocument();
       });
     })
   })
-  
+
   describe("Behavior", () => {
     it("add button should open add new product modal", async () => {
       render(<Header total={total} />);
@@ -62,16 +62,16 @@ describe("Header Testing", () => {
     it("search should update routes and showing X button", async () => {
       const searchText = "Rtx";
 
-      render(<Header total={total}/>);
+      render(<Header total={total} />);
       const searchBtn = screen.getByLabelText(/Search Product/);
       const search = screen.getByPlaceholderText(/Search/i);
-      
+
       const resetBtn = screen.queryByLabelText(/Reset Search/i)
       expect(resetBtn).not.toBeInTheDocument();
 
       await userEvent.type(search, searchText);
       await userEvent.click(searchBtn);
-      expect(useRouter().push).toHaveBeenCalledWith("?search="+searchText, { "scroll": false, "shallow": true } )
+      expect(useRouter().push).toHaveBeenCalledWith("?search=" + searchText, { "scroll": false, "shallow": true })
 
       render(<Header total={total} search={searchText} />);
       const resetBtnAfter = await screen.findByLabelText("Reset search");
@@ -79,22 +79,22 @@ describe("Header Testing", () => {
     })
 
     it("filter btn should showing list then list must update routes when click", async () => {
-      render(<Header total={total}/>);
-      const categoryBtn = screen.getByLabelText(/Category: All/i);
+      render(<Header total={total} />);
+      const categoryBtn = screen.getByRole("button", { name: /Category: All/i });
 
       const menuList = screen.queryByLabelText(/Category list/i)
       expect(menuList).not.toHaveClass("visible");
-      
+
       await userEvent.click(categoryBtn);
-      
+
       expect(menuList).toHaveClass("visible");
-      
+
       const selectedCategory = screen.getByText("smartphones");
       expect(selectedCategory).toBeInTheDocument();
 
       await userEvent.click(selectedCategory);
 
-      expect(useRouter().push).toHaveBeenCalledWith("?category=smartphones", { "scroll": false, "shallow": true } )
+      expect(useRouter().push).toHaveBeenCalledWith("?category=smartphones", { "scroll": false, "shallow": true })
     })
 
   })

@@ -160,7 +160,6 @@ const TableAction: React.FC<ActionProps> = ({name, id}) => {
       {isEdit && <Edit product={product} setIsEdit={setIsEdit} />}
 
       {isView && <View product={product} setIsView={setIsView} />}
-      {/* {isView && <div aria-label="view-product-modal"></div>} */}
     </>
   );
 }

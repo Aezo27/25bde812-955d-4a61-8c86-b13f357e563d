@@ -1,5 +1,7 @@
 [![Jest Test](https://github.com/Aezo27/25bde812-955d-4a61-8c86-b13f357e563d/actions/workflows/testing.yml/badge.svg)](https://github.com/Aezo27/25bde812-955d-4a61-8c86-b13f357e563d/actions/workflows/testing.yml) [![Vercel Production Deployment](https://github.com/Aezo27/25bde812-955d-4a61-8c86-b13f357e563d/actions/workflows/varcel.yml/badge.svg)](https://github.com/Aezo27/25bde812-955d-4a61-8c86-b13f357e563d/actions/workflows/varcel.yml) [![CI Dockerhub](https://github.com/Aezo27/25bde812-955d-4a61-8c86-b13f357e563d/actions/workflows/docker.yml/badge.svg)](https://github.com/Aezo27/25bde812-955d-4a61-8c86-b13f357e563d/actions/workflows/docker.yml)
 
+![My Remote Image](https://github.com/Aezo27/25bde812-955d-4a61-8c86-b13f357e563d/blob/03e6fb9c4b93f5261339bc19ccf6299841ce3e63/public/thumb.png)
+
 Hello, I'm Rama, I created this project with the aim of completing a task from [Ambisius Lab](https://www.ambisius.com/) for a job vacancy as a Full-time Software Engineer.
 
 [Live Website](https://dummyjson-product-daahboard.vercel.app/) to see this aplication
