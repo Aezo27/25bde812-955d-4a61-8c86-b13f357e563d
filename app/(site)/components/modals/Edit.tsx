@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { disableScroll, enableScroll } from "@/utils/bodyScroll";
-import { addProduct } from "@/utils/data/api";
+import { editProduct } from "@/utils/data/api";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 
@@ -10,7 +10,6 @@ import ProductSchema, { ProductSchemaType } from "@/models/zodSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Toast from "@/components/Toast";
 import TextArea from "@/components/TextArea";
-import UploadInput from "@/components/UploadInput";
 
 interface EditProps {
   product: {
@@ -66,7 +65,7 @@ const Edit: React.FC<EditProps> = ({ product, setIsEdit }) => {
 
   const onSubmit = handleSubmit(async (data) => {
 
-    const result = await addProduct(data);
+    const result = await editProduct(data, product.id);
 
     if (result) {
       toastHandler();
@@ -79,7 +78,6 @@ const Edit: React.FC<EditProps> = ({ product, setIsEdit }) => {
     disableScroll();
 
     // set value to field
-    setValue('id', product?.id);
     setValue('title', product?.title);
     setValue('description', product?.description);
     setValue('brand', product?.brand);
@@ -104,6 +102,7 @@ const Edit: React.FC<EditProps> = ({ product, setIsEdit }) => {
         aria-labelledby="modal-title"
         role="dialog"
         aria-modal="true"
+        aria-label="edit-product-modal"
       >
         <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
@@ -117,7 +116,6 @@ const Edit: React.FC<EditProps> = ({ product, setIsEdit }) => {
                   Edit {product.title}
                 </h3>
                 <div className="mt-8 flex flex-col gap-4">
-                  <input type="hidden" {...register("id")} />
                   <Input
                     autofocus
                     name="title"

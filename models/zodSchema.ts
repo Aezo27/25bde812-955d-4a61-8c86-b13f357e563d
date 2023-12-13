@@ -2,7 +2,6 @@ import z from "zod";
 
 // for zod validation
 const ProductSchema = z.object({
-  id: z.number().optional().or(z.literal("")),
   title: z
     .string()
     .trim()

@@ -89,7 +89,7 @@ const Add = () => {
           className={`fixed inset-0 z-10 w-screen overflow-y-auto ${
             isShow ? "opacity-100" : "opacity-0"
           } transition-all duration-500`}
-          aria-label="add-product"
+          aria-label="add-product-modal"
           role="dialog"
           aria-modal="true"
         >

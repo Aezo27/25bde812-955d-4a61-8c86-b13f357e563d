@@ -3,7 +3,7 @@ import Image from "next/image";
 import TableAction from "./modals/TableAction";
 
 interface TableProps {
-  products: Array<string>,
+  products: any,
   total: number,
 }
 

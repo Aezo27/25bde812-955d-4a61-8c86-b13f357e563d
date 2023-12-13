@@ -1,6 +1,6 @@
 "use client"
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface SearchProps {
   search?: string,
@@ -23,6 +23,7 @@ const Search: React.FC<SearchProps> = ({search}) => {
     router.push("/", { scroll: false, shallow: true });
     setIsSearch("");
   }
+  
 
   return (
     <form onSubmit={handleSumbit}>
@@ -59,6 +60,7 @@ const Search: React.FC<SearchProps> = ({search}) => {
             type="button"
             className="absolute right-0"
             onClick={resetSearch}
+            aria-label="Reset search"
           >
             <svg
               viewBox="0 0 14 14"

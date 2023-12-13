@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll --detectOpenHandles"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
@@ -18,10 +18,12 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.49.0",
+    "undici": "^6.0.1",
     "zod": "^3.22.4"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.1.5",
+    "@testing-library/react": "^14.1.2",
     "@types/jest": "^29.5.11",
     "@types/node": "^20",
     "@types/react": "^18",

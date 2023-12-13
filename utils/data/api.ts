@@ -4,7 +4,6 @@ import { revalidateTag } from "next/cache";
 import { resolve } from "path";
 
 export interface productInterface {
-  id?: number | "";
   title: string;
   description: string;
   brand: string;
@@ -48,7 +47,8 @@ export async function getProduct(params: any) {
       );
     }
     const data = await response.json();
-    const pages = Math.ceil(data.total / limit) === 0 ? 1:Math.ceil(data.total / limit);
+    const pages =
+      Math.ceil(data.total / limit) === 0 ? 1 : Math.ceil(data.total / limit);
     // await wait(3000);
     return { data, pages };
   } catch (e: any) {
@@ -56,14 +56,14 @@ export async function getProduct(params: any) {
   }
 }
 
-
-export async function deleteProduct(id:number){
+export async function deleteProduct(id: number) {
   try {
     const response = await fetch("https://dummyjson.com/products/" + id, {
       method: "DELETE",
     });
     const data = await response.json();
-    revalidateTag("product");
+    // // refresh item after server action
+    // revalidateTag("product");
     return data;
   } catch (e: any) {
     return { error: e.message };
@@ -88,20 +88,27 @@ export async function addProduct(formData: productInterface) {
       body: JSON.stringify(formData),
     });
     const data = await response.json();
+    // // refresh item after server action
+    // revalidateTag("product");
     return data;
   } catch (e: any) {
     return { error: e.message };
   }
 }
 
-export async function editProduct(formData: productInterface) {
+export async function editProduct(formData: productInterface, id:number) {
   try {
-    const response = await fetch("https://dummyjson.com/products/"+formData.id, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+    const response = await fetch(
+      "https://dummyjson.com/products/" + id,
+      {
+        method: "PUT" /* or PATCH */,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      }
+    );
     const data = await response.json();
+    // // refresh item after server action
+    // revalidateTag("product");
     return data;
   } catch (e: any) {
     return { error: e.message };
@@ -119,6 +126,5 @@ export async function getCategories() {
 }
 
 export async function wait(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms))
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
-

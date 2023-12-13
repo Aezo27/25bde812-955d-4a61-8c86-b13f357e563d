@@ -4,14 +4,14 @@ import ThemeSwitch from "./header/ThemeSwitch";
 import Add from "./modals/Add";
 
 interface HeaderProps {
-  total: string;
+  total: number;
   category?: string;
   search?: string;
 }
 
 const Header: React.FC<HeaderProps> = ({ total, category, search }) => {
   return (
-    <header data-testid="header">
+    <header>
       <div className="flex justify-end mb-3 h-8">
         <ThemeSwitch />
       </div>

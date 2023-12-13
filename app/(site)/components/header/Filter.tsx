@@ -16,17 +16,16 @@ const Filter: React.FC<CategoryProps> = ({ category }) => {
   const [categoryData, setCategoryData] = useState([]);
   const [activeCategory, setActiveCategory] = useState(category || "All");
   const makeCategories = async () => {
-    setCategoryData(await getCategories());
+    const data = await getCategories();
+    setCategoryData(data);
   };
 
   const router = useRouter();
 
   const newRef = useRef<HTMLDivElement>(null);
   const handleOutsideCategory = (e:any) => {
-    if (isOpen) {
-      if (newRef.current && !newRef.current.contains(e.target)) {
-        setIsOpen(false);
-      }
+    if (newRef.current && !newRef.current.contains(e.target)) {
+      setIsOpen(false);
     }
   };
 
@@ -57,8 +56,7 @@ const Filter: React.FC<CategoryProps> = ({ category }) => {
     <div ref={newRef} className="relative inline-block text-left mr-auto">
       <button
         aria-label="Category Selector"
-        onClick={() => {setIsOpen(!isOpen); console.log('aa');
-        }}
+        onClick={() => setIsOpen(!isOpen)}
         className="inline-flex items-center bg-white hover:bg-gray-50 border rounded-lg text-gray-500 dark:text-gray-400 dark:bg-gray-700 rtl:flex-row-reverse dark:border-gray-600 dark:divide-gray-600 py-1 px-2"
       >
         <h2 className="text-base">Category: {activeCategory}</h2>
@@ -84,7 +82,7 @@ const Filter: React.FC<CategoryProps> = ({ category }) => {
         } `}
         role="menu"
         aria-orientation="vertical"
-        aria-labelledby="menu-button"
+        aria-label="Category list"
         tabIndex={0}
       >
         <div className="py-1 grid md:grid-cols-4 grid-cols-2" role="none">
