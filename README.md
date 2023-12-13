@@ -4,7 +4,7 @@
 
 Hello, I'm Rama, I created this project with the aim of completing a task from [Ambisius Lab](https://www.ambisius.com/) for a job vacancy as a Full-time Software Engineer.
 
-[Live Website](https://dummyjson-product-daahboard.vercel.app/) to see this aplication
+[Live Website](https://dummyjson-product-dashboard.vercel.app/) to see this aplication
 
 I took all the data from [dummyjson](https://dummyjson.com/docs/products). and all APIs work such as Create, Update, Delete (simulation only), and Read.
 There are search features, product filters and pagination.
