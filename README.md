@@ -42,7 +42,7 @@ How to run and stop docker container:
 # Run
 docker start -i ambisiuslab
 # stop
-ddocker stop ambisiuslab
+docker stop ambisiuslab
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
