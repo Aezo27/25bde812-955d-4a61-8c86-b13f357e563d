@@ -22,7 +22,7 @@ const UploadInput: React.FC<UploadProps> = ({ name, required, readonly, disable,
   const [isError, isSetError] = useState("")
 
   function handleChange(e: any) {
-    console.log(e.target.files);
+    // console.log(e.target.files);
     if (e.target.files && e.target.files[0]) {
       for (let i = 0; i < e.target.files["length"]; i++) {
         setFiles((prevState: any) => [...prevState, e.target.files[i]]);

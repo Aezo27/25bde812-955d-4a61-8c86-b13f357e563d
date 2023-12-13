@@ -55,7 +55,6 @@ const Filter: React.FC<CategoryProps> = ({ category }) => {
   return (
     <div ref={newRef} className="relative inline-block text-left mr-auto">
       <button
-        aria-label="Category Selector"
         onClick={() => setIsOpen(!isOpen)}
         className="inline-flex items-center bg-white hover:bg-gray-50 border rounded-lg text-gray-500 dark:text-gray-400 dark:bg-gray-700 rtl:flex-row-reverse dark:border-gray-600 dark:divide-gray-600 py-1 px-2"
       >

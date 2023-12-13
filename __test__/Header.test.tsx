@@ -39,7 +39,7 @@ describe("Header Testing", () => {
   
     it("should have Category Selector", async() => {
       render(<Header total={total} />);
-      const categoryBtn = screen.getByLabelText(/Category Selector/i);
+      const categoryBtn = screen.getByLabelText(/Category: All/i);
       await waitFor(() => {
         expect(categoryBtn).toBeInTheDocument();
       });
@@ -80,7 +80,7 @@ describe("Header Testing", () => {
 
     it("filter btn should showing list then list must update routes when click", async () => {
       render(<Header total={total}/>);
-      const categoryBtn = screen.getByLabelText(/Category Selector/i);
+      const categoryBtn = screen.getByLabelText(/Category: All/i);
 
       const menuList = screen.queryByLabelText(/Category list/i)
       expect(menuList).not.toHaveClass("visible");

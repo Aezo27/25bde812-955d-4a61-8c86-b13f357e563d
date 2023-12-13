@@ -1,6 +1,19 @@
+[![Jest Test](https://github.com/Aezo27/25bde812-955d-4a61-8c86-b13f357e563d/actions/workflows/testing.yml/badge.svg)](https://github.com/Aezo27/25bde812-955d-4a61-8c86-b13f357e563d/actions/workflows/testing.yml) [![Vercel Production Deployment](https://github.com/Aezo27/25bde812-955d-4a61-8c86-b13f357e563d/actions/workflows/varcel.yml/badge.svg)](https://github.com/Aezo27/25bde812-955d-4a61-8c86-b13f357e563d/actions/workflows/varcel.yml) [![CI Dockerhub](https://github.com/Aezo27/25bde812-955d-4a61-8c86-b13f357e563d/actions/workflows/docker.yml/badge.svg)](https://github.com/Aezo27/25bde812-955d-4a61-8c86-b13f357e563d/actions/workflows/docker.yml)
+
 Hello, I'm Rama, I created this project with the aim of completing a task from [Ambisius Lab](https://www.ambisius.com/) for a job vacancy as a Full-time Software Engineer.
 
-I added the docker compose feature for production and development with hot reload feature (windows).
+[Live Website](https://dummyjson-product-daahboard.vercel.app/) to see this aplication
+
+I took all the data from [dummyjson](https://dummyjson.com/docs/products). and all APIs work such as Create, Update, Delete (simulation only), and Read.
+There are search features, product filters and pagination.
+
+* Darkmode / lightmode
+* Validation using [zod](https://zod.dev/)
+* Test unit with [Jest](jestjs.io) and [React Test Library](https://testing-library.com/)
+* API Mocking Library with [MSW](https://mswjs.io/)
+* Github Workflow (Jest test, [Vercel deployment](https://vercel.com/), [DockerHub](https://hub.docker.com/))
+* I added the docker compose feature for production and development with hot reload feature (windows).
+
 
 ## Getting Started
 
