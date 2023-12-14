@@ -29,7 +29,7 @@ describe("Footer Testing", () => {
       })
     })
 
-    it("should have nuber pagination", async () => {
+    it("should have pagination", async () => {
       render(<Footer pages={pages} />);
       const pagination = screen.getByRole("button", { name: "3" });
       await waitFor(() => {

@@ -16,12 +16,15 @@ There are search features, product filters and pagination.
 * Github Workflow (Jest test, [Vercel deployment](https://vercel.com/), [DockerHub](https://hub.docker.com/))
 * I added the docker compose feature for production and development with hot reload feature (windows).
 
+## Important
+> Need latest version of node or lts version 18.x to prevent error jest testing (error in node 19.x)
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
+npm i
 npm run dev
 ```
 
